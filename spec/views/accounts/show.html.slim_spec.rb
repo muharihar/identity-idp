@@ -1,7 +1,9 @@
 require 'rails_helper'
 
 describe 'accounts/show.html.slim' do
-  let(:user) { build_stubbed(:user, :signed_up) }
+  let(:user) do
+    build_stubbed(:user, :signed_up)
+  end
   let(:decorated_user) { user.decorate }
 
   before do
@@ -146,5 +148,44 @@ describe 'accounts/show.html.slim' do
     render
 
     expect(view).to render_template(partial: '_delete_account_item_heading')
+  end
+
+  describe 'sign in timestamps and IP addresses' do
+    current_sign_in_at = Time.zone.parse('Sep 19 2019 09:19')
+    last_sign_in_at = Time.zone.parse('Sep 18 2018 09:18')
+    let(:user) do
+      build_stubbed(
+        :user,
+        :signed_up,
+        current_sign_in_at: current_sign_in_at,
+        last_sign_in_at: last_sign_in_at,
+        current_sign_in_ip: '1.2.3.4',
+        last_sign_in_ip: '4.3.2.1'
+      )
+    end
+
+    it 'shows the current sign_in time' do
+      render
+
+      expect(rendered).to have_content UtcTimePresenter.new(user.current_sign_in_at).to_s
+    end
+
+    it 'shows the last sign_in time' do
+      render
+
+      expect(rendered).to have_content UtcTimePresenter.new(user.last_sign_in_at).to_s
+    end
+
+    it 'shows the current sign_in IP address' do
+      render
+
+      expect(rendered).to have_content '1.2.3.4'
+    end
+
+    it 'shows the last sign_in IP address' do
+      render
+
+      expect(rendered).to have_content '4.3.2.1'
+    end
   end
 end
