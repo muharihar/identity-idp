@@ -240,6 +240,8 @@ production:
     cert: 'identity_dashboard_cert'
     attribute_bundle:
       - email
+      - x509_subject
+      - x509_presented
 
   'urn:gov:gsa:openidconnect.profiles:sp:sso:gsa:dashboard':
     friendly_name: 'Dashboard'
@@ -251,6 +253,10 @@ production:
     return_to_sp_url: 'https://dashboard.<%= LoginGov::Hostdata.env %>.<%= LoginGov::Hostdata.domain %>'
     redirect_uris:
       - 'https://dashboard.<%= LoginGov::Hostdata.env %>.<%= LoginGov::Hostdata.domain %>/users/result'
+    attribute_bundle:
+      - email
+      - x509_subject
+      - x509_presented
   <% end %>
 
   'urn:gov:gsa:openidconnect:sp:sinatra':
