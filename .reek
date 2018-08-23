@@ -84,6 +84,7 @@ TooManyInstanceVariables:
   exclude:
     - OpenidConnectAuthorizeForm
     - Idv::VendorResult
+    - BaseFlow
     - CloudhsmKeyGenerator
     - CloudhsmKeySharer
     - WebauthnSetupForm
@@ -173,6 +174,7 @@ UtilityFunction:
     exclude:
       - complete_idv_session
       - SamlAuthHelper#link_user_to_identity
+      - session_from_completed_flow_steps
       - visit_idp_from_sp_with_loa1
       - visit_idp_from_sp_with_loa3
   DuplicateMethodCall:
