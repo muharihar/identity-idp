@@ -120,7 +120,6 @@ feature 'LOA1 Single Sign On' do
       saml_authn_request = auth_request.create(saml_settings)
       visit saml_authn_request
       register_user
-      click_on t('users.personal_key.get_another')
       click_acknowledge_personal_key
 
       expect(current_path).to eq sign_up_completed_path

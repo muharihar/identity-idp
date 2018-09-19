@@ -30,7 +30,21 @@
 @media #{$breakpoint-sm} {
   .separator-text > div {
     &::after {
+      color: #000;
       padding: 0 .5rem;
     }
   }
+}
+
+.bg-pk-box {
+  background-image: image-url('personal-key/pkey-block.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+}
+
+.bg-personal-key {
+  background-image: image-url('personal-key/shield.svg');
+  background-position: center;
+  background-repeat: no-repeat;
+  background-size: 25%;
 }
