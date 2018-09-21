@@ -59,7 +59,7 @@ en:
     personal_key:
       accent: Write it down or print it out.
       info_html: This is the only way to regain access to your account if you lose
-        your password or phone. %{accent}
+        your phone or security options. %{accent}
       once_html: "<strong>Personal keys are one-time use.</strong> If you need to
         use your personal key for any reason, you'll be issued a new key."
       safety_html: "<strong>Keep it private and safe.</strong> Don't share your personal
